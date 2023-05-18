@@ -224,7 +224,21 @@
 
     // 데이터 삭제하기
     const setDelete = (idx) => {
+      $.ajax({
+        url: "http://localhost:8080/api/v2/todo/" - idx,
+        type: "put"
 
+      }).done((result) => {
+        console.log(result);
+        if(result.code == 0)
+        {
+          init();
+        }
+
+      }).fail((error) => {
+        console.log(error);
+        alert(error.responseJSON.message);
+      });
     }
 
 
